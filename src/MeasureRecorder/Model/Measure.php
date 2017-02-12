@@ -22,8 +22,8 @@ class Measure
         $this->meta = $meta;
     }
 
-    public function getCreationDate(){
-        return $this->creationDate->toDateTime();
+    public function getCreationDate($mongoFormat = false){
+        return $mongoFormat ? $this->creationDate : $this->creationDate->toDateTime();
     }
 
     public function hasMeta($key){
