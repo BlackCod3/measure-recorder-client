@@ -18,7 +18,7 @@ class Measure
 
     public function __construct(array $meta = array()) {
 
-        $this->creationDate = new \MongoDB\BSON\UTCDateTime(round(microtime(true) * 1000)); //MongoDate
+        $this->creationDate = new \MongoDB\BSON\UTCDateTime(strtotime(date('c'))*1000); //MongoDate
         $this->meta = $meta;
     }
 
