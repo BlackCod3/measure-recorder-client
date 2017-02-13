@@ -3,7 +3,6 @@
 
 namespace MeasureRecorder;
 
-use MeasureRecorder\Config\ConfigDev;
 use MeasureRecorder\Model\Measure;
 use PHPUnit\Framework\TestCase;
 
@@ -15,7 +14,7 @@ class ClientTest extends TestCase
     protected $client;
 
     public function setUp() {
-        $this->client = new Client(new ConfigDev());
+        $this->client = new Client("dev");
     }
 
     public function testMeta(){
