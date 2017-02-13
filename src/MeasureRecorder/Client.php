@@ -3,6 +3,8 @@
 namespace MeasureRecorder;
 
 use MeasureRecorder\Config\Config;
+use MeasureRecorder\Config\ConfigDev;
+use MeasureRecorder\Config\ConfigProd;
 use MeasureRecorder\Model\Measure;
 
 class Client
@@ -12,8 +14,15 @@ class Client
      */
     protected $config;
 
-    public function __construct(Config $config){
-        $this->config = $config;
+    public function __construct($env){
+
+        # + test, preprod if needed
+        if(strtolower($env) == "prod"){
+            $this->config = new ConfigProd();
+        }
+        else{
+            $this->config = new ConfigDev();
+        }
     }
 
     public function saveMeasure(Measure $measure){
